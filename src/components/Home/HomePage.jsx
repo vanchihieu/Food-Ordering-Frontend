@@ -36,6 +36,7 @@ const HomePage = () => {
             {/* {restaurant.restaurants.map((item, i) => (
               <RestaurantCard data={item} index={i} />
             ))} */}
+            
           </div>
         </div>
       </section>
