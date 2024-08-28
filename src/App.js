@@ -1,8 +1,16 @@
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import "./App.css";
+import darkTheme from "./theme/DarkTheme";
+import NavBar from "./components/Navbar/Navbar";
+
 function App() {
   return (
-    <div className="App">
-      <p>Food Ordering</p>
-    </div>
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+      <div>
+        <NavBar />
+      </div>
+    </ThemeProvider>
   );
 }
 
