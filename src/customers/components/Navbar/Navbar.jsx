@@ -11,7 +11,19 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import "./Navbar.css";
+import { useNavigate } from "react-router-dom";
+import Auth from "../../pages/Auth/Auth";
+
 const NavBar = () => {
+  const navigate = useNavigate();
+
+  const handleCloseAuthModel = () => {
+    navigate("/");
+  };
+  const navigateToHome = () => {
+    navigate("/");
+  };
+
   return (
     <div className="px-5 z-50 py-[.8rem] bg-[#e91e63]  lg:px-20 flex justify-between">
       <div className="flex items-center space-x-4">
@@ -33,7 +45,7 @@ const NavBar = () => {
           </IconButton>
         </div>
         <div className="flex items-center space-x-2">
-          <IconButton>
+          <IconButton onClick={() => navigate("/account/login")}>
             <PersonIcon sx={{ fontSize: "2rem" }} />
           </IconButton>
 
@@ -54,6 +66,8 @@ const NavBar = () => {
           </Badge>
         </IconButton>
       </div>
+
+      <Auth handleClose={handleCloseAuthModel} />
     </div>
   );
 };
