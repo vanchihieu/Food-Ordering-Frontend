@@ -1,3 +1,4 @@
+import "./Restaurant.css";
 import { Card, Chip, IconButton } from "@mui/material";
 import React from "react";
 import FavoriteIcon from "@mui/icons-material/Favorite";
