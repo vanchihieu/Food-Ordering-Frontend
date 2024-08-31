@@ -1,6 +1,7 @@
 import React from "react";
 import "./HomePage.css";
 import MultipleItemsCarousel from "../../components/MultiItemCarousel/MultiItemCarousel";
+
 const HomePage = () => {
   return (
     <div className="">
