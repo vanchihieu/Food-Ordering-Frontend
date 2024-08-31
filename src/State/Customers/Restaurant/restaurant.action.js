@@ -176,7 +176,8 @@ export const updateRestaurantStatus = ({ restaurantId, jwt }) => {
           },
         }
       );
-      console.log("ressssss ", res.data);
+      console.log("🚀 ~ return ~ res:", res);
+
       dispatch({ type: UPDATE_RESTAURANT_STATUS_SUCCESS, payload: res.data });
     } catch (error) {
       console.log("error ", error);
@@ -245,7 +246,7 @@ export const deleteEventAction = ({ eventId, jwt }) => {
   };
 };
 
-export const getRestaurnatsEvents = ({ restaurantId, jwt }) => {
+export const getRestaurantsEvents = ({ restaurantId, jwt }) => {
   return async (dispatch) => {
     dispatch({ type: GET_RESTAURANTS_EVENTS_REQUEST });
 
