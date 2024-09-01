@@ -11,7 +11,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addItemToCart } from "../../../State/Customers/Cart/cart.action";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { categorizedIngredients } from "../../util/CategorizeIngredients";
+import { categorizedIngredients } from "../../util/CategorizedIngredients";
 
 const MenuItemCard = ({ item }) => {
   const dispatch = useDispatch();
