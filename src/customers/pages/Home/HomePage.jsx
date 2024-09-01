@@ -7,6 +7,8 @@ import { getAllRestaurantsAction } from "../../../State/Customers/Restaurant/res
 
 const HomePage = () => {
   const { auth, restaurant } = useSelector((store) => store);
+  console.log("🚀 ~ HomePage ~ restaurant:", restaurant);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
