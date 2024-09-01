@@ -21,16 +21,6 @@ import { getMenuItemsByRestaurantId } from "../../../State/Customers/Menu/menu.a
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import TodayIcon from "@mui/icons-material/Today";
 
-const categories = [
-  "Thali",
-  "Starters",
-  "Indian Main Course",
-  "Rice and Biryani",
-  "Breads",
-  "Accompaniments",
-  "Dessert",
-];
-
 const foodTypes = [
   { label: "All", value: "all" },
   { label: "Vegetarian Only", value: "vegetarian" },
@@ -41,7 +31,6 @@ const Restaurant = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const { id } = useParams();
-  console.log("🚀 ~ Restaurant ~ id:", id);
 
   const { restaurant, menu } = useSelector((store) => store);
   const navigate = useNavigate();
@@ -88,7 +77,7 @@ const Restaurant = () => {
     <>
       <div className="px-5 lg:px-20 ">
         <section>
-          <h3 className="text-stone-300 py-2 mt-10 text-xl ">
+          <h3 className="py-2 mt-10 text-xl text-stone-300 ">
             Home/{restaurant.restaurant?.address.country}/
             {restaurant.restaurant?.name}/{restaurant.restaurant?.id}/Order
             Online
@@ -122,17 +111,17 @@ const Restaurant = () => {
             <h1 className="text-4xl font-semibold">
               {restaurant.restaurant?.name}
             </h1>
-            <p className="text-gray-500 mt-1">
+            <p className="mt-1 text-gray-500">
               {restaurant.restaurant?.description}
             </p>
-            <div className="space-y-3 mt-3">
-              <p className="text-gray-500 flex items-center gap-3">
+            <div className="mt-3 space-y-3">
+              <p className="flex items-center gap-3 text-gray-500">
                 <LocationOnIcon />{" "}
                 <span>{restaurant.restaurant?.address.streetAddress}</span>
               </p>
               <p className="flex items-center gap-3 text-gray-500">
                 <TodayIcon />{" "}
-                <span className=" text-orange-300">
+                <span className="text-orange-300 ">
                   {" "}
                   {restaurant.restaurant?.openingHours} (Today)
                 </span>
@@ -144,7 +133,7 @@ const Restaurant = () => {
 
         <section className="pt-[2rem] lg:flex relative ">
           <div className="space-y-10 lg:w-[20%] filter">
-            <div className="box space-y-5 lg:sticky top-28">
+            <div className="space-y-5 box lg:sticky top-28">
               <div className="">
                 <Typography sx={{ paddingBottom: "1rem" }} variant="h5">
                   Food Type
