@@ -19,7 +19,6 @@ import { pink } from "@mui/material/colors";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const location = useLocation();
   const { auth, cart } = useSelector((store) => store);
   const dispatch = useDispatch();
 
