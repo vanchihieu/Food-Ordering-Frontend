@@ -86,12 +86,12 @@ const Cart = () => {
       order: {
         restaurantId: cart.cartItems[0].food.restaurant.id,
         deliveryAddress: {
-          fullName: "ashok",
-          streetAddress: "gujrat",
-          city: "gujrat",
-          state: "gujrat",
+          fullName: "van chi hieu",
+          streetAddress: "12 nguyen van bao",
+          city: "ho chi minh",
+          state: "go vap",
           postalCode: "599000",
-          country: "India",
+          country: "Vietnam",
         },
       },
     };

@@ -12,6 +12,7 @@ const CartItemCard = ({ item }) => {
   const dispatch = useDispatch();
   const jwt = localStorage.getItem("jwt");
   const { auth } = useSelector((store) => store);
+  
   const handleUpdateCartItem = (value) => {
     if (value === -1 && item.quantity == 1) {
       handleRemoveCartItem();
