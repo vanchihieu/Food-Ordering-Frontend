@@ -276,9 +276,20 @@ const CreateRestaurantForm = () => {
               />
             </Grid>
           </Grid>
-          <Button variant="contained" color="primary" type="submit">
-            Create Restaurant
-          </Button>
+          <Grid
+            item
+            xs={12}
+            sx={{ display: "flex", justifyContent: "center", paddingY: "6px" }}
+          >
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+              sx={{ padding: "12px", borderRadius: "10px" }}
+            >
+              Create Restaurant
+            </Button>
+          </Grid>
         </form>
       </div>
     </div>
