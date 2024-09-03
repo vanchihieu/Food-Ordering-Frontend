@@ -16,6 +16,7 @@ import {
 import { getRestaurantsCategory } from "../State/Customers/Restaurant/restaurant.action";
 import { fetchRestaurantsOrder } from "../State/Admin/Order/restaurants.order.action";
 import Ingredients from "./Ingredients/Ingredients";
+import RestaurantsMenu from "./Food/RestaurantsMenu";
 
 const Admin = () => {
   const dispatch = useDispatch();
@@ -60,6 +61,7 @@ const Admin = () => {
         <div className="lg:w-[80vw]">
           <Routes>
             <Route path="/orders" element={<RestaurantsOrder />} />
+            <Route path="/menu" element={<RestaurantsMenu />} />
             <Route path="/add-restaurant" element={<CreateRestaurantForm />} />
             <Route path="/category" element={<Category />} />
             <Route path="/details" element={<Details />} />
