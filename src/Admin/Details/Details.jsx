@@ -11,6 +11,7 @@ import { updateRestaurantStatus } from "../../State/Customers/Restaurant/restaur
 const Details = () => {
   const dispatch = useDispatch();
   const { auth, restaurant } = useSelector((store) => store);
+
   const jwt = localStorage.getItem("jwt");
 
   const handleRestaurantStatus = () => {
@@ -21,6 +22,8 @@ const Details = () => {
       })
     );
   };
+  console.log("🚀 ~ Details ~ restaurant:", restaurant.usersRestaurant);
+
   return (
     <div className="lg:px-20 px-5">
       <div className="py-5 flex justify-center items-center gap-5">

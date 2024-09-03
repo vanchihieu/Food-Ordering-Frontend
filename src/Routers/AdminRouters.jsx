@@ -6,6 +6,8 @@ import CreateRestaurantForm from "../Admin/AddRestaurants/CreateRestaurantForm";
 
 const AdminRouters = () => {
   const { restaurant } = useSelector((store) => store);
+  console.log("🚀 ~ AdminRouters ~ restaurant:", restaurant.usersRestaurant);
+
   return (
     <div>
       <Routes>
