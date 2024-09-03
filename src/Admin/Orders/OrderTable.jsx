@@ -17,10 +17,7 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-
 import React, { useState } from "react";
-
-import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { updateOrderStatus } from "../../State/Admin/Order/restaurants.order.action";
 
@@ -32,8 +29,6 @@ const orderStatus = [
 ];
 
 const OrdersTable = ({ isDashboard, name }) => {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState({ status: "", sort: "" });
   const dispatch = useDispatch();
   const jwt = localStorage.getItem("jwt");
   const { restaurantsOrder } = useSelector((store) => store);
@@ -56,8 +51,6 @@ const OrdersTable = ({ isDashboard, name }) => {
     handleUpdateStatusMenuClose(index);
     dispatch(updateOrderStatus({ orderId, orderStatus, jwt }));
   };
-
-  console.log("🚀 ~ OrdersTable ~ restaurantsOrder:", restaurantsOrder.orders);
 
   return (
     <Box>
@@ -92,7 +85,7 @@ const OrdersTable = ({ isDashboard, name }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {restaurantsOrder.orders
+              {restaurantsOrder?.orders
                 ?.slice(0, isDashboard ? 7 : restaurantsOrder.orders.length)
                 .map((item, index) => (
                   <TableRow
@@ -217,7 +210,7 @@ const OrdersTable = ({ isDashboard, name }) => {
 
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        open={restaurantsOrder.loading}
+        open={restaurantsOrder?.loading}
       >
         <CircularProgress color="inherit" />
       </Backdrop>
