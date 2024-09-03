@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import CreateRestaurantForm from "./AddRestaurants/CreateRestaurantForm";
 import AdminSidebar from "./AdminSidebar";
 import RestaurantsOrder from "./Orders/RestaurantsOrder";
+import Category from "./Category/Category";
 
 const Admin = () => {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ const Admin = () => {
           <Routes>
             <Route path="/orders" element={<RestaurantsOrder />} />
             <Route path="/add-restaurant" element={<CreateRestaurantForm />} />
+            <Route path="/category" element={<Category />} />
           </Routes>
         </div>
       </div>

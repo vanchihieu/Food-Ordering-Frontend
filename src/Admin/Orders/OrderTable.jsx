@@ -18,13 +18,11 @@ import {
   TableRow,
 } from "@mui/material";
 
-import React, {  useState } from "react";
+import React, { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  updateOrderStatus,
-} from "../../State/Admin/Order/restaurants.order.action";
+import { updateOrderStatus } from "../../State/Admin/Order/restaurants.order.action";
 
 const orderStatus = [
   { label: "Pending", value: "PENDING" },
@@ -39,6 +37,7 @@ const OrdersTable = ({ isDashboard, name }) => {
   const dispatch = useDispatch();
   const jwt = localStorage.getItem("jwt");
   const { restaurantsOrder } = useSelector((store) => store);
+
   const [anchorElArray, setAnchorElArray] = useState([]);
 
   const handleUpdateStatusMenuClick = (event, index) => {
@@ -57,6 +56,8 @@ const OrdersTable = ({ isDashboard, name }) => {
     handleUpdateStatusMenuClose(index);
     dispatch(updateOrderStatus({ orderId, orderStatus, jwt }));
   };
+
+  console.log("🚀 ~ OrdersTable ~ restaurantsOrder:", restaurantsOrder.orders);
 
   return (
     <Box>
