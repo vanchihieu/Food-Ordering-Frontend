@@ -12,7 +12,7 @@ const AdminRouters = () => {
         <Route
           path="/*"
           element={
-            !restaurant.usersRestaurant ? <CreateRestaurantForm /> : <Admin />
+            restaurant.usersRestaurant ? <CreateRestaurantForm /> : <Admin />
           }
         />
       </Routes>

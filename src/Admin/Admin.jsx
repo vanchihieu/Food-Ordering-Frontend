@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import CreateRestaurantForm from "./AddRestaurants/CreateRestaurantForm";
 import AdminSidebar from "./AdminSidebar";
+import RestaurantsOrder from "./Orders/RestaurantsOrder";
 
 const Admin = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const Admin = () => {
 
         <div className="lg:w-[80vw]">
           <Routes>
+            <Route path="/orders" element={<RestaurantsOrder />} />
             <Route path="/add-restaurant" element={<CreateRestaurantForm />} />
           </Routes>
         </div>
