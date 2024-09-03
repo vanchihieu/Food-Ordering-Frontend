@@ -6,6 +6,7 @@ import CreateRestaurantForm from "./AddRestaurants/CreateRestaurantForm";
 import AdminSidebar from "./AdminSidebar";
 import RestaurantsOrder from "./Orders/RestaurantsOrder";
 import Category from "./Category/Category";
+import Details from "./Details/Details";
 
 const Admin = () => {
   const dispatch = useDispatch();
@@ -29,6 +30,8 @@ const Admin = () => {
             <Route path="/orders" element={<RestaurantsOrder />} />
             <Route path="/add-restaurant" element={<CreateRestaurantForm />} />
             <Route path="/category" element={<Category />} />
+            <Route path="/details" element={<Details />} />
+
           </Routes>
         </div>
       </div>

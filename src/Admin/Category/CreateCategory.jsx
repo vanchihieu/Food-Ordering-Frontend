@@ -6,6 +6,8 @@ import { createCategoryAction } from "../../State/Customers/Restaurant/restauran
 
 const CreateCategory = ({ handleClose }) => {
   const { id } = useParams();
+  console.log("🚀 ~ CreateCategory ~ id:", id);
+
   const dispatch = useDispatch();
   const { auth } = useSelector((store) => store);
   const jwt = localStorage.getItem("jwt");

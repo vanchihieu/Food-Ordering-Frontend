@@ -30,7 +30,6 @@ const style = {
 
 const Category = () => {
   const { restaurant } = useSelector((store) => store);
-  console.log("🚀 ~ Category ~ restaurant:", restaurant.categories);
 
   const [openCreateCategory, setOpenCreateCategory] = React.useState(false);
   const handleOpenCreateCategory = () => setOpenCreateCategory(true);
