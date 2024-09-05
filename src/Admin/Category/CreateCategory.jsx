@@ -56,7 +56,6 @@ const CreateCategory = ({ handleClose }) => {
             onChange={handleInputChange}
             fullWidth
           />
-
           <Button type="submit" variant="contained" color="primary">
             Create
           </Button>

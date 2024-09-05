@@ -7,7 +7,6 @@ import {
   Select,
   MenuItem,
 } from "@mui/material";
-import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createIngredient } from "../../State/Admin/Ingredients/Action";
 

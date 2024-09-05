@@ -73,7 +73,7 @@ const Events = () => {
         })
       );
     }
-  }, [restaurant.usersRestaurant]);
+  }, [auth.jwt, dispatch, jwt, restaurant.usersRestaurant]);
 
   return (
     <div>
@@ -90,7 +90,7 @@ const Events = () => {
 
       <div className="mt-5 px-5 flex flex-wrap gap-5">
         {restaurant.restaurantsEvents.map((item) => (
-          <EventCard item={item} />
+          <EventCard item={item} key={item.id}/>
         ))}
         {/* <div>
           <img

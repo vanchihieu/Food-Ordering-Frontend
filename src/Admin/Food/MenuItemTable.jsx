@@ -49,7 +49,7 @@ const MenuItemTable = ({ isDashboard, name }) => {
         })
       );
     }
-  }, [ingredients.update, restaurant.usersRestaurant]);
+  }, [dispatch, ingredients.update, restaurant.usersRestaurant]);
 
   // console.log(
   //   "-------- ",

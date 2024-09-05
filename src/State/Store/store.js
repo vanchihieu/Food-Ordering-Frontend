@@ -6,6 +6,7 @@ import menuItemReducer from "../Customers/Menu/Reducer";
 import cartReducer from "../Customers/Cart/Reducer";
 import { orderReducer } from "../Customers/Orders/order.reducer";
 import { ingredientReducer } from "../Admin/Ingredients/Reducer";
+import restaurantsOrderReducer from "../Admin/Order/restaurants.order.reducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   order: orderReducer,
 
   // admin
+  restaurantsOrder: restaurantsOrderReducer,
   ingredients: ingredientReducer,
 });
 
