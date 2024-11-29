@@ -20,12 +20,20 @@ const CartItemCard = ({ item }) => {
     const data = { cartItemId: item.id, quantity: item.quantity + value };
     dispatch(updateCartItem({ data, jwt: auth.jwt || jwt }));
   };
+  
   const handleRemoveCartItem = () => {
     dispatch(removeCartItem({ cartItemId: item.id, jwt: auth.jwt || jwt }));
   };
+
+  const formatCurrency = (amount) => {
+    return new Intl.NumberFormat("vi-VN", {
+      style: "currency",
+      currency: "VND",
+    }).format(amount);
+  };
   return (
     <div className="px-5">
-      <div className="lg:flex items-center lg:space-x-5">
+      <div className="items-center lg:flex lg:space-x-5">
         <div>
           <img
             className="w-[5rem] h-[5rem] object-cover"
@@ -35,10 +43,10 @@ const CartItemCard = ({ item }) => {
         </div>
 
         <div className="flex items-center justify-between lg:w-[70%]">
-          <div className="space-y-1 lg:space-y-3 w-full ">
+          <div className="w-full space-y-1 lg:space-y-3 ">
             <p className="">{item.food.name}</p>
             {
-              <div className="flex justify-between items-center">
+              <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-1">
                   <IconButton
                     onClick={() => handleUpdateCartItem(-1)}
@@ -46,7 +54,7 @@ const CartItemCard = ({ item }) => {
                   >
                     <RemoveCircleOutlineIcon />
                   </IconButton>
-                  <div className="w-5 h-5 text-xs flex items-center justify-center ">
+                  <div className="flex items-center justify-center w-5 h-5 text-xs ">
                     {item.quantity}
                   </div>
 
@@ -61,11 +69,11 @@ const CartItemCard = ({ item }) => {
             }
           </div>
 
-          <p>₹{item.totalPrice}</p>
+          <p>{formatCurrency(item.totalPrice)}</p>
         </div>
       </div>
       <div className="pt-3 space-x-2">
-        {item.ingredients.map((item) => (
+        {item?.ingredients?.map((item) => (
           <Chip label={item} />
         ))}
       </div>

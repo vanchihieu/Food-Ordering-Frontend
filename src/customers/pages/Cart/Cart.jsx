@@ -102,39 +102,46 @@ const Cart = () => {
 
   const handleCloseSankBar = () => setOpenSnakbar(false);
 
+  const formatCurrency = (amount) => {
+    return new Intl.NumberFormat("vi-VN", {
+      style: "currency",
+      currency: "VND",
+    }).format(amount);
+  };
+
   return (
     <Fragment>
       {cart.cartItems.length > 0 ? (
-        <main className="lg:flex justify-between">
+        <main className="justify-between lg:flex">
           <section className="lg:w-[30%] space-y-6 lg:min-h-screen pt-10">
             {cart.cartItems.map((item, i) => (
               <CartItemCard item={item} />
             ))}
 
             <Divider />
-            <div className="billDetails px-5 text-sm">
-              <p className="font-extralight py-5">Bill Details</p>
+            <div className="px-5 text-sm billDetails">
+              <p className="py-5 font-extralight">Bill Details</p>
               <div className="space-y-3">
                 <div className="flex justify-between text-gray-400">
                   <p>Item Total</p>
-                  <p>₹{cartTotal(cart.cartItems)}</p>
+                  <p>{formatCurrency(cartTotal(cart.cartItems))}</p>
                 </div>
                 <div className="flex justify-between text-gray-400">
                   <p>Deliver Fee</p>
-                  <p>₹21</p>
+                  <p>{formatCurrency(21)}</p>
                 </div>
                 <div className="flex justify-between text-gray-400">
                   <p>Plateform Fee</p>
-                  <p>₹5</p>
+                  <p>{formatCurrency(5)}</p>
                 </div>
                 <div className="flex justify-between text-gray-400">
                   <p>GST and Restaurant Charges</p>
-                  <p>₹33</p>
+                  <p>{formatCurrency(33)}</p>
                 </div>
                 <Divider />
                 <div className="flex justify-between text-gray-400">
                   <p>Total Pay</p>
-                  <p>₹{cartTotal(cart.cartItems) + 33}</p>
+                  <p>{formatCurrency(cartTotal(cart.cartItems) + 33)}</p>
                 </div>
               </div>
             </div>
@@ -142,10 +149,10 @@ const Cart = () => {
           <Divider orientation="vertical" flexItem />
           <section className="lg:w-[70%] flex justify-center px-5 pb-10 lg:pb-0">
             <div className="">
-              <h1 className="text-center font-semibold text-2xl py-10">
+              <h1 className="py-10 text-2xl font-semibold text-center">
                 Choose Delivery Address
               </h1>
-              <div className="flex gap-5 flex-wrap justify-center">
+              <div className="flex flex-wrap justify-center gap-5">
                 {auth.user?.addresses.map((item, index) => (
                   <AddressCard
                     handleSelectAddress={createOrderUsingSelectedAddress}
@@ -154,7 +161,7 @@ const Cart = () => {
                   />
                 ))}
 
-                <Card className="flex flex-col justify-center items-center p-5  w-64 ">
+                <Card className="flex flex-col items-center justify-center w-64 p-5 ">
                   <div className="flex space-x-5">
                     <AddLocationAltIcon />
                     <div className="space-y-5">
@@ -174,7 +181,7 @@ const Cart = () => {
             </div>
             {/* <div className="flex justify-center items-center h-[90vh]">
               <Card className="billDetails px-5 text-sm w-[20vw] p-10 space-y-5">
-                <p className=" text-xl font-bold text-center">Bill Details</p>
+                <p className="text-xl font-bold text-center ">Bill Details</p>
                 <div className="space-y-3">
                   <div className="flex justify-between text-gray-400">
                     <p>Item Total</p>
@@ -210,9 +217,9 @@ const Cart = () => {
         </main>
       ) : (
         <div className="flex h-[90vh] justify-center items-center">
-          <div className="text-center space-y-5">
+          <div className="space-y-5 text-center">
             <RemoveShoppingCartIcon sx={{ width: "10rem", height: "10rem" }} />
-            <p className="font-bold text-3xl">Your Cart Is Empty</p>
+            <p className="text-3xl font-bold">Your Cart Is Empty</p>
           </div>
         </div>
       )}

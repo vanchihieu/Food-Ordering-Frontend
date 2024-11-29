@@ -77,43 +77,30 @@ const Restaurant = () => {
     <>
       <div className="px-5 lg:px-20 ">
         <section>
-          <h3 className="py-2 mt-10 text-xl text-stone-300 ">
+          <h3 className="mt-10 mb-5 text-xl font-semibold text-stone-400 ">
             Home/{restaurant.restaurant?.address.country}/
             {restaurant.restaurant?.name}/{restaurant.restaurant?.id}/Order
             Online
           </h3>
           <div>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
+            <Grid container spacing={3}>
+              <Grid item xs={12} lg={12}>
                 <img
-                  className="w-full h-[60vh] object-cover"
+                  className="w-full h-[60vh] object-cover rounded-lg shadow-md"
                   src={restaurant.restaurant?.images[0]}
-                  alt=""
-                />
-              </Grid>
-              <Grid item xs={12} lg={6}>
-                <img
-                  className="w-full h-[40vh] object-cover"
-                  src={restaurant.restaurant?.images[1]}
-                  alt=""
-                />
-              </Grid>
-              <Grid item xs={12} lg={6}>
-                <img
-                  className="w-full h-[40vh] object-cover"
-                  src={restaurant.restaurant?.images[2]}
-                  alt=""
+                  alt="Restaurant Image"
                 />
               </Grid>
             </Grid>
           </div>
+
           <div className="pt-3 pb-5">
-            <h1 className="text-4xl font-semibold">
+            <Typography variant="h3" gutterBottom>
               {restaurant.restaurant?.name}
-            </h1>
-            <p className="mt-1 text-gray-500">
+            </Typography>
+            <Typography variant="body1" paragraph color="textSecondary">
               {restaurant.restaurant?.description}
-            </p>
+            </Typography>
             <div className="mt-3 space-y-3">
               <p className="flex items-center gap-3 text-gray-500">
                 <LocationOnIcon />{" "}
@@ -122,7 +109,6 @@ const Restaurant = () => {
               <p className="flex items-center gap-3 text-gray-500">
                 <TodayIcon />{" "}
                 <span className="text-orange-300 ">
-                  {" "}
                   {restaurant.restaurant?.openingHours} (Today)
                 </span>
               </p>
