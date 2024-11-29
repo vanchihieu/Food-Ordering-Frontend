@@ -52,6 +52,12 @@ const OrdersTable = ({ isDashboard, name }) => {
     dispatch(updateOrderStatus({ orderId, orderStatus, jwt }));
   };
 
+  const formatCurrency = (amount) => {
+    return new Intl.NumberFormat("vi-VN", {
+      style: "currency",
+      currency: "VND",
+    }).format(amount);
+  };
   return (
     <Box>
       <Card className="mt-1">
@@ -110,7 +116,7 @@ const OrdersTable = ({ isDashboard, name }) => {
 
                     <TableCell sx={{}}>{item?.customer.email}</TableCell>
 
-                    <TableCell>₹{item?.totalAmount}</TableCell>
+                    <TableCell>{formatCurrency(item.totalAmount)}</TableCell>
 
                     <TableCell className="">
                       {item.items.map((orderItem) => (
@@ -120,7 +126,7 @@ const OrdersTable = ({ isDashboard, name }) => {
                     {!isDashboard && (
                       <TableCell className="space-y-2">
                         {item.items.map((orderItem) => (
-                          <div className="flex gap-1 flex-wrap">
+                          <div className="flex flex-wrap gap-1">
                             {orderItem.ingredients?.map((ingre) => (
                               <Chip label={ingre} />
                             ))}

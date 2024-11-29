@@ -7,6 +7,7 @@ const Notifications = () => {
   const dispatch = useDispatch();
 
   const { order } = useSelector((store) => store);
+  console.log("🚀 ~ Notifications ~ order:", order);
 
   useEffect(() => {
     dispatch(getUsersNotificationAction());

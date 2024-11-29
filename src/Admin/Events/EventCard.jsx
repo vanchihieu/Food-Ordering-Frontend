@@ -12,9 +12,13 @@ import { useDispatch } from "react-redux";
 import { deleteEventAction } from "../../State/Customers/Restaurant/restaurant.action";
 
 const EventCard = ({ item, isCustomer }) => {
+  console.log("🚀 ~ EventCard ~ item:", item.id);
+
   const dispatch = useDispatch();
   const handleDeleteEvent = () => {
-    dispatch(deleteEventAction(item.id));
+    dispatch(
+      deleteEventAction({ id: item.id, jwt: localStorage.getItem("jwt") })
+    );
   };
   return (
     <div>

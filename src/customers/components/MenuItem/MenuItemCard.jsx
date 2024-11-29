@@ -42,10 +42,17 @@ const MenuItemCard = ({ item }) => {
     dispatch(addItemToCart(data));
   };
 
+  const formatCurrency = (amount) => {
+    return new Intl.NumberFormat("vi-VN", {
+      style: "currency",
+      currency: "VND",
+    }).format(amount);
+  };
+
   return (
     <>
-      {/* <div className="lg:flex items-center justify-between box">
-      <div className="lg:flex items-center lg:space-x-5">
+      {/* <div className="items-center justify-between lg:flex box">
+      <div className="items-center lg:flex lg:space-x-5">
         <img
           className="w-[7rem] h-[7rem] object-cover"
           src={item.imageUrl}
@@ -53,7 +60,7 @@ const MenuItemCard = ({ item }) => {
         />
 
         <div className="space-y-1 lg:space-y-5 lg:max-w-2xl">
-          <p className="font-semibold text-xl">{item.name}</p>
+          <p className="text-xl font-semibold">{item.name}</p>
           <p>₹{item.price}</p>
           <p className="text-gray-400">{item.description}</p>
         </div>
@@ -70,8 +77,8 @@ const MenuItemCard = ({ item }) => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <div className="lg:flex items-center justify-between">
-            <div className="lg:flex items-center lg:space-x-5">
+          <div className="items-center justify-between lg:flex">
+            <div className="items-center lg:flex lg:space-x-5">
               <img
                 className="w-[7rem] h-[7rem] object-cover"
                 src={item.images[0]}
@@ -79,8 +86,8 @@ const MenuItemCard = ({ item }) => {
               />
 
               <div className="space-y-1 lg:space-y-5 lg:max-w-2xl">
-                <p className="font-semibold text-xl">{item.name}</p>
-                <p>₹{item.price}</p>
+                <p className="text-xl font-semibold">{item.name}</p>
+                <p>{formatCurrency(item.price)}</p>
                 <p className="text-gray-400">{item.description}</p>
               </div>
             </div>
@@ -91,7 +98,7 @@ const MenuItemCard = ({ item }) => {
         </AccordionSummary>
         <AccordionDetails>
           <form onSubmit={handleAddItemToCart}>
-            <div className="flex gap-5 flex-wrap">
+            <div className="flex flex-wrap gap-5">
               {Object.keys(categorizedIngredients(item?.ingredients))?.map(
                 (category) => (
                   <div className="pr-5">

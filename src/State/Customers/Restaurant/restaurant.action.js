@@ -227,18 +227,18 @@ export const getAllEvents = ({ jwt }) => {
   };
 };
 
-export const deleteEventAction = ({ eventId, jwt }) => {
+export const deleteEventAction = ({ id, jwt }) => {
   return async (dispatch) => {
     dispatch({ type: DELETE_EVENTS_REQUEST });
 
     try {
-      const res = await api.delete(`api/admin/events/${eventId}`, {
+      const res = await api.delete(`api/admin/events/${id}`, {
         headers: {
           Authorization: `Bearer ${jwt}`,
         },
       });
       console.log("DELETE events ", res.data);
-      dispatch({ type: DELETE_EVENTS_SUCCESS, payload: eventId });
+      dispatch({ type: DELETE_EVENTS_SUCCESS, payload: id });
     } catch (error) {
       console.log("catch - ", error);
       dispatch({ type: DELETE_EVENTS_FAILURE, payload: error });

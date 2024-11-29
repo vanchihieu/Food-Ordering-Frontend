@@ -60,8 +60,8 @@ const Events = () => {
       })
     );
     console.log("Image URL:", formValues, restaurant.usersRetaurant?.id);
-    // setFormValues(initialValues);
-    // handleCloseModal();
+    setFormValues(initialValues);
+    handleCloseModal();
   };
 
   useEffect(() => {

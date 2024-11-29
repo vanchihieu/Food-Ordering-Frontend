@@ -65,6 +65,13 @@ const MenuItemTable = ({ isDashboard, name }) => {
     dispatch(deleteFoodAction({ foodId, jwt: auth.jwt || jwt }));
   };
 
+  const formatCurrency = (amount) => {
+    return new Intl.NumberFormat("vi-VN", {
+      style: "currency",
+      currency: "VND",
+    }).format(amount);
+  };
+
   return (
     <Box width={"100%"}>
       <Card className="mt-1">
@@ -143,7 +150,7 @@ const MenuItemTable = ({ isDashboard, name }) => {
                             ].map((ingredient, index) => (
                               <div
                                 key={ingredient.id}
-                                className="flex gap-1 items-center"
+                                className="flex items-center gap-1"
                               >
                                 <div>
                                   <HorizontalRuleIcon
@@ -152,7 +159,7 @@ const MenuItemTable = ({ isDashboard, name }) => {
                                 </div>
                                 <div
                                   key={ingredient.id}
-                                  className="flex gap-4 items-center"
+                                  className="flex items-center gap-4"
                                 >
                                   <p>{ingredient.name}</p>
                                 </div>
@@ -163,8 +170,9 @@ const MenuItemTable = ({ isDashboard, name }) => {
                       ))}
                     </TableCell>
                   )}
+
                   <TableCell sx={{ textAlign: "center" }}>
-                    ₹{item.price}
+                    {formatCurrency(item.price)}
                   </TableCell>
 
                   <TableCell sx={{ textAlign: "center" }}>
