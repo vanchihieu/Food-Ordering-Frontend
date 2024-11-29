@@ -13,8 +13,8 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  TablePagination,
 } from "@mui/material";
-
 import CreateIngredientCategoryForm from "./CreateIngredientCategory";
 import { useState } from "react";
 import CreateIngredientForm from "./CreateIngredientForm";
@@ -50,6 +50,25 @@ const Ingredients = () => {
     dispatch(updateStockOfIngredient({ id, jwt }));
   };
 
+  // State for Pagination
+  const [page, setPage] = useState(0); // Current page
+  const [rowsPerPage, setRowsPerPage] = useState(5); // Rows per page
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0); // Reset page to 0 when rows per page change
+  };
+
+  // Get the ingredients for the current page
+  const currentIngredients = ingredients.ingredients.slice(
+    page * rowsPerPage,
+    page * rowsPerPage + rowsPerPage
+  );
+
   return (
     <div className="px-2">
       <Grid container spacing={1}>
@@ -64,26 +83,22 @@ const Ingredients = () => {
               }}
               action={
                 <IconButton onClick={handleOpenIngredient}>
-                  {" "}
                   <Create />
                 </IconButton>
               }
             />
             <TableContainer className="h-[88vh] overflow-y-scroll">
-              <Table sx={{}} aria-label="table in dashboard">
+              <Table aria-label="table in dashboard">
                 <TableHead>
                   <TableRow>
                     <TableCell>Id</TableCell>
-
                     <TableCell>Name</TableCell>
-
                     <TableCell>Category</TableCell>
-
                     <TableCell>Availability</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {ingredients.ingredients.map((item, index) => (
+                  {currentIngredients.map((item) => (
                     <TableRow
                       className="cursor-pointer"
                       hover
@@ -93,11 +108,9 @@ const Ingredients = () => {
                       }}
                     >
                       <TableCell>{item?.id}</TableCell>
-
-                      <TableCell className="">{item.name}</TableCell>
-                      <TableCell className="">{item.category.name}</TableCell>
-
-                      <TableCell className="">
+                      <TableCell>{item.name}</TableCell>
+                      <TableCell>{item.category.name}</TableCell>
+                      <TableCell>
                         <Button
                           onClick={() => handleUpdateStocke(item.id)}
                           color={item.inStoke ? "success" : "primary"}
@@ -109,6 +122,15 @@ const Ingredients = () => {
                   ))}
                 </TableBody>
               </Table>
+              <TablePagination
+                rowsPerPageOptions={[5, 10, 25]}
+                component="div"
+                count={ingredients.ingredients.length} // Total number of items
+                rowsPerPage={rowsPerPage} // Number of items per page
+                page={page} // Current page
+                onPageChange={handleChangePage} // Handler for page change
+                onRowsPerPageChange={handleChangeRowsPerPage} // Handler for rows per page change
+              />
             </TableContainer>
           </Card>
         </Grid>
@@ -123,22 +145,20 @@ const Ingredients = () => {
               }}
               action={
                 <IconButton onClick={handleOpenIngredientCategory}>
-                  {" "}
                   <Create />
                 </IconButton>
               }
             />
             <TableContainer>
-              <Table sx={{}} aria-label="table in dashboard">
+              <Table aria-label="table in dashboard">
                 <TableHead>
                   <TableRow>
                     <TableCell>Id</TableCell>
-
                     <TableCell>Name</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {ingredients.category?.map((item, index) => (
+                  {ingredients.category?.map((item) => (
                     <TableRow
                       className="cursor-pointer"
                       hover
@@ -148,8 +168,7 @@ const Ingredients = () => {
                       }}
                     >
                       <TableCell>{item?.id}</TableCell>
-
-                      <TableCell className="">{item.name}</TableCell>
+                      <TableCell>{item.name}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -159,6 +178,7 @@ const Ingredients = () => {
         </Grid>
       </Grid>
 
+      {/* Modal for creating new ingredient */}
       <Modal
         open={openIngredient}
         onClose={handleCloseIngredient}
@@ -170,6 +190,7 @@ const Ingredients = () => {
         </Box>
       </Modal>
 
+      {/* Modal for creating new ingredient category */}
       <Modal
         open={openIngredientCategory}
         onClose={handleCloseIngredientCategory}
